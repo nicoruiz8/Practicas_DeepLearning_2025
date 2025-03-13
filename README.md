@@ -10,7 +10,7 @@ Happy learning!
 
 **Objective:** Gain a comprehensive understanding of convolutional filters and their role in Convolutional Neural Networks (CNNs).
 
-In this session, we will delve into the workings of convolutional filters, which are the building blocks of Convolutional Neural Networks (CNNs). We will discuss how these filters help in extracting features from images, and how they contribute to the success of CNNs in computer vision tasks and how can we try to make CNNs more interpretable.
+In this session, we will dive into the workings of convolutional filters, which are the building blocks of Convolutional Neural Networks (CNNs). We will discuss how these filters help in extracting features from images, and how they contribute to the success of CNNs in computer vision tasks and how can we try to make CNNs more interpretable.
 
 ## Sessions 2-4: Transfer Learning and Deployment
 
