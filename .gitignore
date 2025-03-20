@@ -162,3 +162,5 @@ cython_debug/
 # Things I find
 *.jpg
 *.DS_Store
+*/data/*
+myenv/
