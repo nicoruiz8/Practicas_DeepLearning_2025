@@ -1,0 +1,35 @@
+{
+  "os": "macOS-10.16-x86_64-i386-64bit",
+  "python": "CPython 3.12.9",
+  "startedAt": "2025-03-24T17:41:32.975845Z",
+  "program": "/Users/nicoruizlafuente/Documents/MasterBigDataICAI/ML2/DeepLearning/Practicas_DeepLearning_2025/03TransferLearning/03TransferLearning.ipynb",
+  "codePath": "03TransferLearning/03TransferLearning.ipynb",
+  "git": {
+    "remote": "https://github.com/nicoruiz8/Practicas_DeepLearning_2025.git",
+    "commit": "c8bf80fcbd707dcd3d0f559dc81e19aba2e7a041"
+  },
+  "email": "nrlfbc@gmail.com",
+  "root": "/Users/nicoruizlafuente/Documents/MasterBigDataICAI/ML2/DeepLearning/Practicas_DeepLearning_2025/03TransferLearning",
+  "host": "MacBook-Pro-de-Nico.local",
+  "executable": "/Users/nicoruizlafuente/anaconda3/envs/dl_lab/bin/python",
+  "codePathLocal": "03TransferLearning.ipynb",
+  "cpu_count": 4,
+  "cpu_count_logical": 8,
+  "disk": {
+    "/": {
+      "total": "250685575168",
+      "used": "174532169728"
+    },
+    "/System/Volumes/Data": {
+      "total": "250685575168",
+      "used": "174532169728"
+    }
+  },
+  "memory": {
+    "total": "17179869184"
+  },
+  "cpu": {
+    "count": 4,
+    "countLogical": 8
+  }
+}

@@ -1,4 +1,3 @@
-import json
 import matplotlib.pyplot as plt
 import numpy as np
 import os
@@ -9,6 +8,7 @@ from torch.utils.data import DataLoader
 from torchvision import transforms
 from tempfile import TemporaryDirectory
 import json
+import wandb
 
 class CNN(nn.Module):
     """Convolutional Neural Network model for image classification."""
@@ -84,6 +84,19 @@ class CNN(nn.Module):
             best_accuracy = 0.0
             torch.save(self.state_dict(), best_model_path)
 
+            run = wandb.init(
+                project="03TransferLearning",
+                name="resnet50",
+                config={
+                    "epochs": epochs,
+                    "batch_size": train_loader.batch_size,
+                    "learning_rate": optimizer.param_groups[0]['lr'],
+                    "architecture": "CNN",
+                    "dataset": "dataset_moodle"
+                }
+            )
+            run.watch(self, log="all")
+
             history = {'train_loss': [], 'train_accuracy': [], 'valid_loss': [], 'valid_accuracy': []}
             for epoch in range(epochs):
                 self.train()
@@ -102,6 +115,9 @@ class CNN(nn.Module):
                 train_accuracy /= len(train_loader.dataset)
                 history['train_loss'].append(train_loss)
                 history['train_accuracy'].append(train_accuracy)
+
+                # ✅ Log training metrics
+                run.log({"Train Loss": train_loss, "Train Accuracy": train_accuracy})
 
                 print(f'Epoch {epoch + 1}/{epochs} - '
                       f'Train Loss: {train_loss:.4f}, '
@@ -122,18 +138,27 @@ class CNN(nn.Module):
                 history['valid_loss'].append(valid_loss)
                 history['valid_accuracy'].append(valid_accuracy)
 
+                # ✅ Log validation metrics
+                run.log({"Validation Loss": valid_loss, "Validation Accuracy": valid_accuracy})
+
                 print(f'Epoch {epoch + 1}/{epochs} - '
                         f'Validation Loss: {valid_loss:.4f}, '
                         f'Validation Accuracy: {valid_accuracy:.4f}')
-                
+
                 if epoch % nepochs_to_save == 0:
                     if valid_accuracy > best_accuracy:
                         best_accuracy = valid_accuracy
                         torch.save(self.state_dict(), best_model_path)
-                
+            
+            
+            # ✅ Finish WandB run
+            #run.finish()
+
+            # Load the best model  
             torch.save(self.state_dict(), best_model_path)    
             self.load_state_dict(torch.load(best_model_path))
             return history
+
         
     def predict(self, data_loader):
         """Predict the classes of the images in the data loader.
