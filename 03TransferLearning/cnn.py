@@ -86,7 +86,7 @@ class CNN(nn.Module):
 
             run = wandb.init(
                 project="03TransferLearning",
-                name="resnet50",
+                name=f"{self.base_model.__class__.__name__}_nico",
                 config={
                     "epochs": epochs,
                     "batch_size": train_loader.batch_size,
